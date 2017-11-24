@@ -1,0 +1,30 @@
+{
+  "name": "noni",
+  "version": "0.0.1",
+  "description": "Koa-inspired queue middleware framework for node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc && mocha"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "amqp": "^0.2.6",
+    "amqplib": "^0.5.2",
+    "aws-sdk": "^2.153.0",
+    "bunyan": "^1.8.12"
+  },
+  "devDependencies": {
+    "@types/amqp": "^0.2.3",
+    "@types/amqplib": "^0.5.4",
+    "@types/bunyan": "^1.8.3",
+    "@types/chai": "^4.0.5",
+    "@types/mocha": "^2.2.44",
+    "@types/sinon": "^4.0.0",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "sinon": "^4.1.2",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.6.1"
+  }
+}
