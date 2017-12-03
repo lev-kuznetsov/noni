@@ -7,11 +7,10 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "outDir": "target",
+    "outDir": "dist",
     "sourceMap": true
   },
-  "exclude": [
-    "node_modules",
-    "target"
+  "include": [
+    "src"
   ]
 }
