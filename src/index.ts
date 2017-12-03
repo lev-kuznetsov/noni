@@ -1,5 +1,5 @@
 import * as Logger from 'bunyan'
-import {extend} from 'lodash'
+import * as AMQP from './amqp'
 
 export interface Context<T> {
   message: T
@@ -13,3 +13,6 @@ export interface Context<T> {
 export type Middleware<T> = (context: Context<T>, next?: () => Promise<void>) => Promise<any>
 
 export type Publish = (body: any) => Promise<void>
+
+export const amqp = AMQP
+export * from './common'

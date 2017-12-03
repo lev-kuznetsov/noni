@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- "8"
+
+sudo: required
+
+services:
+- docker
+
+script:
+- npm test
+- docker pull rabbitmq
+- docker run -d --hostname my-rabbit --name some-rabbit --rm -p4369:4369 -p5671:5671 -p5672:5672 -p25672:25672 --name rabbitmq rabbitmq
+- npm run it
+- docker kill rabbitmq

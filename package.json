@@ -4,21 +4,21 @@
   "description": "Koa-inspired queue middleware framework for node.js",
   "main": "index.js",
   "scripts": {
-    "test": "tsc && mocha"
+    "test": "tsc && mocha",
+    "it": "tsc && mocha --opts test/mocha.it.opts"
   },
-  "author": "",
+  "author": "levk",
   "license": "MIT",
   "dependencies": {
-    "amqp": "^0.2.6",
     "amqplib": "^0.5.2",
-    "aws-sdk": "^2.153.0",
-    "bunyan": "^1.8.12"
+    "bunyan": "^1.8.12",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "@types/amqp": "^0.2.3",
     "@types/amqplib": "^0.5.4",
     "@types/bunyan": "^1.8.3",
     "@types/chai": "^4.0.5",
+    "@types/lodash": "^4.14.86",
     "@types/mocha": "^2.2.44",
     "@types/sinon": "^4.0.0",
     "chai": "^4.1.2",

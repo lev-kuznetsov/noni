@@ -1,9 +1,8 @@
-import assemble from '../src/amqp/assemble'
+import {assemble, consumer, parse, publisher} from '../src/amqp'
 import {sandbox, createStubInstance} from 'sinon'
 import {Context} from '../src/index'
 import {expect} from 'chai'
 import {Channel, Message} from 'amqplib'
-import parse from '../src/amqp/parse'
 
 describe('AMQP', () => {
   const mock = sandbox.create()
@@ -85,11 +84,5 @@ describe('AMQP', () => {
         expect(context.body).eql({hello: 'world'})
       })
     })
-  })
-
-  describe('publisher', () => {
-    let channel = {publish: mock.stub()}
-
-
   })
 })
