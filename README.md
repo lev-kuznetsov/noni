@@ -27,11 +27,29 @@ let publisher = amqp.publisher([amqp.assemble], {channel, exchange: 'e', route: 
 // string according to the content headers.
 let consumer = await amqp.consumer([
   amqp.parse,
-  async (context: Context<Message>): Promise<any> => {
+  async <T>(context: Context<T>): Promise<any> => {
     console.log('Received', context.body)
   }
 ], {channel, exchange: 'e', route: 'r'})
 
 // Publish a message
+publisher({foo: 'bar'})
+```
+
+Using with AWS (only SQS is supported at the moment, no SNS)
+
+```
+import {SQS} from 'aws-sdk'
+import {aws, Context} from 'noni'
+
+let publisher = aws.publisher([aws.assemble], {queue: 'q'})
+
+let consumer = await aws.consumer([
+  aws.parse,
+  async <T>(context: Context<T>): Promise<any> => {
+    console.log('Received', context.body)
+  }
+], {queue: 'q'})
+
 publisher({foo: 'bar'})
 ```

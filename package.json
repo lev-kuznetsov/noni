@@ -15,6 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "amqplib": "^0.5.2",
+    "aws-sdk": "^2.163.0",
     "bunyan": "^1.8.12",
     "lodash": "^4.17.4"
   },
@@ -26,7 +27,7 @@
     "@types/mocha": "^2.2.44",
     "@types/sinon": "^4.0.0",
     "chai": "^4.1.2",
-    "mocha": "^4.0.1",
+    "mocha": "^3.5.3",
     "sinon": "^4.1.2",
     "ts-node": "^3.3.0",
     "typescript": "^2.6.1"

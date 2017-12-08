@@ -1,5 +1,6 @@
 import * as Logger from 'bunyan'
 import * as AMQP from './amqp'
+import * as AWS from './aws'
 
 export interface Context<T> {
   message: T
@@ -15,4 +16,5 @@ export type Middleware<T> = (context: Context<T>, next?: () => Promise<void>) =>
 export type Publish = (body: any) => Promise<void>
 
 export const amqp = AMQP
+export const aws = AWS
 export * from './common'

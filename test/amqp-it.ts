@@ -31,5 +31,5 @@ describe('AMQP', () => {
       ], {channel: c2, exchange: 'e', route: 'r'})
       await amqp.publisher([amqp.assemble], {channel: c1, exchange: 'e', route: 'r'})({hello: 'world'})
     } catch (error) {reject(error)}
-  })).timeout(10000)
+  }))
 })

@@ -1,10 +1,10 @@
-import {assemble, parse} from '../src/amqp'
+import {assemble, parse} from '../src/aws'
 import {sandbox} from 'sinon'
 import {Context} from '../src/index'
 import {expect} from 'chai'
-import {Message} from 'amqplib'
+import {SQS} from 'aws-sdk'
 
-describe('AMQP', () => {
+describe('AWS', () => {
   const mock = sandbox.create()
 
   afterEach(() => mock.reset())
@@ -13,7 +13,7 @@ describe('AMQP', () => {
     let context
 
     beforeEach(() => {
-      context = {body: {hello: 'world'}, headers: {}} as Context<Buffer>
+      context = {body: {hello: 'world'}, headers: {}} as Context<string>
     })
 
     it('should continue to next middleware', async () => {
@@ -28,22 +28,9 @@ describe('AMQP', () => {
       })
     })
 
-    it('should set default content encoding header', async () => {
-      await assemble(context, async () => {
-        expect(context.headers['content-encoding']).eql('utf8')
-      })
-    })
-
     it('should assemble message with default encoding', async () => {
       await assemble(context, async () => {
-        expect(context.message.toString()).eql('{"hello":"world"}')
-      })
-    })
-
-    it('should assemble message with set encoding', async () => {
-      context.headers['content-encoding'] = 'base64'
-      await assemble(context, async () => {
-        expect(context.message.toString('base64')).eql('helloworlQ==')
+        expect(context.message).eql('{"hello":"world"}')
       })
     })
   })
@@ -54,12 +41,12 @@ describe('AMQP', () => {
     beforeEach(() => {
       context = {
         message: {
-          content: Buffer.from(JSON.stringify({hello: 'world'}))
+          Body: '{"hello":"world"}'
         }, headers: {
           'content-type': 'application/json',
           'content-encoding': 'utf8'
         }
-      } as Context<Message>
+      } as Context<SQS.Message>
     })
 
     it('should continue to next middleware', async () => {
