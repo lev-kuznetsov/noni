@@ -4,7 +4,10 @@ import {expect} from 'chai'
 import {SQS, SNS} from 'aws-sdk'
 
 describe('AWS', () => {
-  const sqsClientOptions: SQS.ClientConfiguration = {endpoint: 'http://localhost:4576'}
+  const sqsClientOptions: SQS.ClientConfiguration = {
+    endpoint: 'http://localhost:4576',
+    region: 'yolo'
+  }
 
   it('should publish a message consume it', () => new Promise(async (resolve, reject) => {
     try {
