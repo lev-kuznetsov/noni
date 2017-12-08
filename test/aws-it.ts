@@ -6,7 +6,9 @@ import {SQS, SNS} from 'aws-sdk'
 describe('AWS', () => {
   const sqsClientOptions: SQS.ClientConfiguration = {
     endpoint: 'http://localhost:4576',
-    region: 'yolo'
+    region: 'yolo',
+    accessKeyId: 'yolo',
+    secretAccessKey: 'yolo'
   }
 
   it('should publish a message consume it', () => new Promise(async (resolve, reject) => {
@@ -25,5 +27,5 @@ describe('AWS', () => {
       ], {queue: 'q', sqsClientOptions})
       await aws.publisher([aws.assemble], {queue: 'q', sqsClientOptions})({hello: 'world'})
     } catch (error) {reject(error)}
-  })).timeout(10000)
+  })).timeout(60000)
 })
